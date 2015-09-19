@@ -22,7 +22,7 @@ public class OrSpecification<T> extends AbstractSpecification<T> {
 	}
 	
 	@Override
-	public Specification<T> or(Specification<T> s) {
+	public AbstractSpecification<T> or(Specification<T> s) {
 		set.add(s);
 		return this;
 	}

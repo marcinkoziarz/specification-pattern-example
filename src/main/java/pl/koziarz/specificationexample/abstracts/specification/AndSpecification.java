@@ -22,7 +22,7 @@ public class AndSpecification<T> extends AbstractSpecification<T> {
 	}
 	
 	@Override
-	public Specification<T> and(Specification<T> s) {
+	public AbstractSpecification<T> and(Specification<T> s) {
 		set.add(s);
 		return this;
 	}

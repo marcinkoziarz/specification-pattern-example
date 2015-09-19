@@ -5,11 +5,11 @@ import pl.koziarz.specificationexample.abstracts.specification.Specification;
 import pl.koziarz.specificationexample.domain.entity.Child;
 import pl.koziarz.specificationexample.domain.entity.Toy;
 
-public class ChildLikesSpecifiedToySpecifiaction extends AbstractSpecification<Child> {
+public class ChildLikesSpecifiedToySpecification extends AbstractSpecification<Child> {
 
 	private Specification<Toy> s;
 	
-	public ChildLikesSpecifiedToySpecifiaction(Specification<Toy> s) {
+	public ChildLikesSpecifiedToySpecification(Specification<Toy> s) {
 		super();
 		this.s = s;
 	}

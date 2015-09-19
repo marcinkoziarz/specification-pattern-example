@@ -7,12 +7,12 @@ import pl.koziarz.specificationexample.abstracts.specification.Specification;
 import pl.koziarz.specificationexample.domain.entity.Child;
 import pl.koziarz.specificationexample.domain.entity.Toy;
 import pl.koziarz.specificationexample.domain.entity.ToyType;
-import pl.koziarz.specificationexample.domain.specification.ChildLikesSpecifiedToySpecifiaction;
+import pl.koziarz.specificationexample.domain.specification.ChildLikesSpecifiedToySpecification;
 import pl.koziarz.specificationexample.domain.specification.ChildNameSpecification;
 import pl.koziarz.specificationexample.domain.specification.SchoolChildrenSpecification;
 import pl.koziarz.specificationexample.domain.specification.ToyColorSpecification;
 
-public class KindergardenApp {
+public class KindergartenApp {
 
 	public static void main(String[] args) {
 		
@@ -51,7 +51,7 @@ public class KindergardenApp {
 		 * Let's find all children named Johny
 		 */
 		
-		Specification<Child> spec_johny = new ChildNameSpecification("Johny");
+		ChildNameSpecification spec_johny = new ChildNameSpecification("Johny");
 		System.out.println("\nChildren whose name is Johny");
 		printSpecified(children, spec_johny);
 		
@@ -59,14 +59,14 @@ public class KindergardenApp {
 		 * Let's find all children who like red toys
 		 */
 		
-		Specification<Child> spec_red_toy = new ChildLikesSpecifiedToySpecifiaction(new ToyColorSpecification("Red"));
+		Specification<Child> spec_red_toy = new ChildLikesSpecifiedToySpecification(new ToyColorSpecification("Red"));
 		System.out.println("\nChildren who likes some red toys");
 		printSpecified(children, spec_red_toy);
 		
 		/**
 		 * Let's find all children who likes a toy that's not red
 		 */
-		Specification<Child> spec_not_red_toy = new ChildLikesSpecifiedToySpecifiaction(new ToyColorSpecification("Red").not());
+		Specification<Child> spec_not_red_toy = new ChildLikesSpecifiedToySpecification(new ToyColorSpecification("Red").not());
 		System.out.println("\nChildren who likes a toy that's not red");
 		printSpecified(children, spec_not_red_toy);
 		
