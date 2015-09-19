@@ -52,6 +52,40 @@ Or, headmaster may find all children that are not named Johny:
 Specification<Child> findAllButJohny = new ChildNameSpecification("Johny").not();
 ```
 
+### Gateway specifications
+Headmaster can easily find all toys of given colour and all children named Johny. But how to mix specifications and find all Johnys who likes a white toy?
+```java
+Specification<Child> findJohny = new ChildNameSpecification("Johny");
+Specification<Toy> findWhiteToy = new ToyColorSpecification("White");
+```
+Let's create a gateway specification for specifying liked toys for a child:
+```java
+public class ChildLikesSpecifiedToySpecification extends AbstractSpecification<Child> {
+	private Specification<Toy> s;
+	public ChildLikesSpecifiedToySpecification(Specification<Toy> s) {
+		super();
+		this.s = s;
+	}
+	@Override
+	public boolean isSatisfiedBy(Child c) {
+		for( Toy t : c.getFavouriteToys()) {
+			if( s.isSatisfiedBy(t) )
+				return true;
+		}
+		return false;
+	}
+}
+```
+Now using composite specifications headmaster may find all Johnys liking white toys:
+```
+Specification<Child> johnyLikingWhiteToy = new ChildNameSpecification("Johny")
+    .and(new ChildLikesSpecifiedToySpecification(
+        new ToyColorSpecification("White")
+        )
+    );
+```
+
+
 ### Console output of example
 ```
 Children whose name is Johny
