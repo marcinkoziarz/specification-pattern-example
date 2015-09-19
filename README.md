@@ -77,7 +77,7 @@ public class ChildLikesSpecifiedToySpecification extends AbstractSpecification<C
 }
 ```
 Now using composite specifications headmaster may find all Johnys liking white toys:
-```
+```java
 Specification<Child> johnyLikingWhiteToy = new ChildNameSpecification("Johny")
     .and(new ChildLikesSpecifiedToySpecification(
         new ToyColorSpecification("White")
